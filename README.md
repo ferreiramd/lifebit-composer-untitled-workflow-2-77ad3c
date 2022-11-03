@@ -8,14 +8,47 @@
 
 The present workflow is composed by the following unique components (Note that some components may be repeated):
 
-### lifebitai_download_reads
+### lifebitai_traits_ldsc_gc
 
-**Description**: Downloads FastQ reads using SRA toolkit's fasterq-dump when provided with a list of accession numbers. For this component, reads are downloaded uncompressed.\
-**Inputs**: 1\
+**Description**: Genetic Traits pipeline running LDSC on genetic correlation.\
+**Inputs**: 4\
 **Outputs**: 1\
-**Parameters**: 0\
+**Parameters**: 5\
 **Authors**: 
 
 ## Inputs
 
-- `--download_reads_1.accessions`: Accession file CSV file with a label in the first column and the accession number in the second column.
+- `--traits_ldsc_gc_1.gwas_statistics_file`: 
+- `--traits_ldsc_gc_1.hapmap3_snplist`: 
+- `--traits_ldsc_gc_1.gwas_summary_file`: 
+- `--traits_ldsc_gc_1.ld_scores_tar_bz2`: 
+## Parameters
+
+### Required
+
+- `--traits_ldsc_gc_1.gwas_sample_size`: Number of samples in the input GWAS VCF
+    - **Component**: traits_ldsc_gc_1 
+    - Type: number
+
+- `--traits_ldsc_gc_1.other_gwas_sample_size`: Number of samples in the external GWAS VCF
+    - **Component**: traits_ldsc_gc_1 
+    - Type: number
+
+- `--traits_ldsc_gc_1.output_tag`: Tag string for the output
+    - **Component**: traits_ldsc_gc_1 
+    - Type: string
+
+
+
+### Optional
+
+- `--traits_ldsc_gc_1.outdir`: Output directory for the results
+    - **Component**: traits_ldsc_gc_1 
+    - Type: path
+    - Default: `results/` 
+
+- `--traits_ldsc_gc_1.munge_sumstats_chunksize`: Size of the chunks used my mungesumstats
+    - **Component**: traits_ldsc_gc_1 
+    - Type: number
+    - Default: `500000` 
+
